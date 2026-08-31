@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Style src="MainMenu.uss" />
+    <ui:VisualElement class="menu-container">
+        <ui:Label text="TOWN ORDE" class="title" />
+        <ui:Button name="btn-play" text="Jugar" class="menu-button" />
+        <ui:Button name="btn-options" text="Opciones" class="menu-button" />
+        <ui:Button name="btn-exit" text="Salir" class="menu-button" />
+    </ui:VisualElement>
+</ui:UXML>
