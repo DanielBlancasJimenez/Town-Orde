@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32ecc6a1d27ae14c9888bf79bd8c117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridManager
-  styleSheet: {fileID: 7433441132597879392, guid: 1ee5758cee0081b49aabb1d61641bdaa, type: 3}
+  styleSheet: {fileID: 7433441132597879392, guid: c1acd1f3820458b49a169b8003201f5a, type: 3}
   rows: 8
   columns: 8
 --- !u!114 &1844778739
@@ -385,7 +385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
   m_PanelSettings: {fileID: 11400000, guid: 79b9a729d39e14f4ebd6958096dc713c, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 045f4b9767ec9ea4198afe8cbd87dc00, type: 3}
   m_SortingOrder: 0
   m_Position: 0
   m_WorldSpaceSizeMode: 1

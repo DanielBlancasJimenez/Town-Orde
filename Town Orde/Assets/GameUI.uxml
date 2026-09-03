@@ -1,0 +1,50 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Style src="GameUI.uss" />
+    
+    <ui:VisualElement class="main-layout">
+        
+        <!-- PANEL IZQUIERDO -->
+        <ui:VisualElement class="side-panel">
+            <ui:VisualElement class="box king-box">
+                <ui:Label text="Cara del rey" class="text-center" />
+            </ui:VisualElement>
+            
+            <ui:VisualElement class="box info-box">
+                <ui:Label text="Informacion de la casilla que estas seleccionando" class="text-center wrap-text" />
+            </ui:VisualElement>
+            
+            <ui:VisualElement class="box upgrade-box">
+                <ui:Label text="Mejora : Coste de recursos" class="text-center" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- PANEL CENTRAL -->
+        <ui:VisualElement class="center-panel">
+            <ui:Label text="Tu Ciudad" class="title-center" />
+            
+            <!-- Contenedor donde C# generará el tablero 8x8 -->
+            <ui:VisualElement name="grid-container" class="grid-board" />
+            
+            <ui:Label text="Casillas de torres que llevaras" class="subtitle-center" />
+            <ui:VisualElement class="tower-slots">
+                <ui:VisualElement class="slot" />
+                <ui:VisualElement class="slot" />
+                <ui:VisualElement class="slot" />
+                <ui:VisualElement class="slot" />
+                <ui:VisualElement class="slot" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- PANEL DERECHO -->
+        <ui:VisualElement class="side-panel right-panel">
+            <ui:Button text="Menu" class="box menu-btn" />
+            
+            <ui:VisualElement class="box towers-box">
+                <ui:Label text="Torres a elegir" class="text-center" />
+            </ui:VisualElement>
+            
+            <ui:Button text="Empezar orda" class="box start-btn" />
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

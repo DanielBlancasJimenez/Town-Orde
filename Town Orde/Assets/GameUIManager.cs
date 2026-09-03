@@ -2,13 +2,18 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(UIDocument))]
-public class GridManager : MonoBehaviour
+public class GameUIManager : MonoBehaviour
 {
-    [SerializeField] private StyleSheet styleSheet;
+    [Header("Configuración de UI")]
+    [SerializeField] private StyleSheet styleSheet; // Campo para asignar el .uss
+
+    [Header("Configuración del Grid")]
     [SerializeField] private int rows = 8;
     [SerializeField] private int columns = 8;
 
     private UIDocument uiDocument;
+    private VisualElement gridContainer;
+    private Label infoLabel;
 
     private void Awake()
     {
@@ -18,34 +23,34 @@ public class GridManager : MonoBehaviour
     private void OnEnable()
     {
         VisualElement root = uiDocument.rootVisualElement;
-        root.Clear();
 
-        // Cargar y aplicar la hoja de estilos
-        if (styleSheet != null)
+        // Inyectar la hoja de estilos de forma forzada
+        if (styleSheet != null && !root.styleSheets.Contains(styleSheet))
         {
             root.styleSheets.Add(styleSheet);
         }
 
-        // Contenedor centrado
-        VisualElement container = new VisualElement();
-        container.AddToClassList("game-container");
-        root.Add(container);
+        // Referencias a la UI
+        gridContainer = root.Q<VisualElement>("grid-container");
+        infoLabel = root.Q<Label>(className: "wrap-text");
 
-        // Tablero cuadrado con bordes redondeados
-        VisualElement gridBoard = new VisualElement();
-        gridBoard.AddToClassList("grid-board");
-        container.Add(gridBoard);
+        if (gridContainer != null)
+        {
+            GenerateGrid();
+        }
+    }
 
-        // Generar filas y columnas
+    private void GenerateGrid()
+    {
+        gridContainer.Clear();
+
         for (int r = 0; r < rows; r++)
         {
             VisualElement rowElement = new VisualElement();
             rowElement.AddToClassList("grid-row");
 
             if (r == rows - 1)
-            {
                 rowElement.AddToClassList("grid-row-last");
-            }
 
             for (int c = 0; c < columns; c++)
             {
@@ -53,24 +58,28 @@ public class GridManager : MonoBehaviour
                 cell.AddToClassList("grid-cell");
 
                 if (c == columns - 1)
-                {
                     cell.AddToClassList("grid-cell-last-col");
-                }
 
                 int row = r;
                 int col = c;
                 cell.name = $"Cell_{row}_{col}";
+                
                 cell.clicked += () => OnCellClicked(row, col);
 
                 rowElement.Add(cell);
             }
 
-            gridBoard.Add(rowElement);
+            gridContainer.Add(rowElement);
         }
     }
 
     private void OnCellClicked(int row, int col)
     {
-        Debug.Log($"Click en celda: [{row}, {col}]");
+        Debug.Log($"Casilla seleccionada: [{row}, {col}]");
+        
+        if (infoLabel != null)
+        {
+            infoLabel.text = $"Has seleccionado la casilla en la fila {row}, columna {col}.";
+        }
     }
 }
